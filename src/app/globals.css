@@ -14,13 +14,41 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #151a22;
+    --foreground: #f4f4f5;
   }
 }
+
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+/* Squiggle underline hover */
+.squiggle {
+  position: relative;
+  text-decoration: none;
+}
+
+.squiggle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 6px;
+
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 120 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 5 Q 10 0 20 5 T 40 5 T 60 5 T 80 5 T 100 5 T 120 5' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 120px 10px;
+
+  opacity: 0;
+  transform: translateY(2px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.squiggle:hover::after {
+  opacity: 1;
+  transform: translateY(0);
 }
