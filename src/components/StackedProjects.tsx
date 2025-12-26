@@ -21,10 +21,12 @@ export default function StackedProjects() {
   const stickyTopBase = 80; // px - where first card sticks
   const headerH = 56; // px - height of the header "lip"
 
-  const formatted = useMemo(
-    () => projects.map((p, i) => ({ ...p, n: String(i + 1).padStart(3, "0") })),
-    []
-  );
+ type ProjectWithN = Project & { n: string };
+const formatted = useMemo<ProjectWithN[]>(
+  () => projects.map((p, i) => ({ ...p, n: String(i + 1).padStart(3, "0") })),
+  []
+);
+
 
   const totalCards = formatted.length;
   const currentYear = new Date().getFullYear();

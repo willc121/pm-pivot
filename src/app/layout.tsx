@@ -60,33 +60,7 @@ export default function RootLayout({
               <div className="flex flex-col gap-2 py-4 text-xs text-slate-500 md:flex-row md:items-center md:justify-between">
                 <p>© {new Date().getFullYear()} Will Chung. All rights reserved.</p>
 
-                <div className="flex items-center gap-4">
-                  <ScrambleLink
-                    href="mailto:hello@willchung.io"
-                    className="inline-block hover:text-sky-400 transition-colors"
-                  >
-                    Email
-                  </ScrambleLink>
-
-                  <ScrambleLink
-                    href="https://www.linkedin.com/in/willc121/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-block hover:text-sky-400 transition-colors"
-                  >
-                    LinkedIn
-                  </ScrambleLink>
-
-                  <ScrambleLink
-                    href="https://github.com/willc121"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-block hover:text-sky-400 transition-colors"
-                  >
-                    GitHub
-                  </ScrambleLink>
-                </div>
-              </div>
+                          </div>
             </div>
           </footer>
         </div>
