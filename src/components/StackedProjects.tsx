@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { projects } from "../data/projects";
+import { projects, type Project } from "@/data/projects"
 import ScrambleLink from "./ScrambleLink";
 
 type CardEl = HTMLDivElement | null;
