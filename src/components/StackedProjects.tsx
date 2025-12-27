@@ -169,7 +169,7 @@ const formatted: ProjectWithN[] = projects.map((p: Project, i: number) => ({
 
                     {/* Content */}
                     <div className="relative z-10">
-                      <Link href={`/projects/${p.slug}`} className="block">
+                      
                         {/* Header lip */}
                         <div
                           className="flex items-center justify-between px-6"
@@ -208,19 +208,20 @@ const formatted: ProjectWithN[] = projects.map((p: Project, i: number) => ({
                             </span>
                           </div>
 
-                          <div
-                            className={`flex items-center gap-2 text-sm transition-colors duration-300 ${
-                              isActive ? "text-white/85" : "text-white/50"
-                            }`}
-                          >
-                            <span>Read</span>
-                            <span
+                          <Link
+                       href={`/projects/${p.slug}`}
+                className={`flex items-center gap-2 text-sm transition-colors duration-300 hover:text-white ${
+                isActive ? "text-white/85" : "text-white/50"
+               }`}
+>
+  <span>Read</span>
+  <span
                               aria-hidden
                               className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                             >
                               ↗
                             </span>
-                          </div>
+                          </Link>
                         </div>
 
                         {/* Body */}
@@ -280,7 +281,6 @@ const formatted: ProjectWithN[] = projects.map((p: Project, i: number) => ({
                             <div className="absolute inset-0 bg-gradient-to-t from-[#171d27]/30 to-transparent" />
                           </div>
                         </div>
-                      </Link>
                     </div>
                   </div>
 

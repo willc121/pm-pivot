@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body className="antialiased bg-slate-950 text-slate-100">
         <div className="min-h-screen flex flex-col">
           {/* Header */}
