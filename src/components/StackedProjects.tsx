@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { projects, type Project } from "@/data/projects"
 import ScrambleLink from "./ScrambleLink";
 
@@ -18,19 +18,16 @@ export default function StackedProjects() {
   const copyTimerRef = useRef<number | null>(null);
 
   // TUNING - adjust these for your design
-  const stickyTopBase = 80; // px - where first card sticks
-  const headerH = 56; // px - height of the header "lip"
+  const stickyTopBase = 15; // px - where first card sticks
+  const headerH = 64; // 👈 ADJUST HERE (was 56) - header lip height
 
-type ProjectWithN = Project & { n: string; image?: string }
+  type ProjectWithN = Project & { n: string; image?: string }
 
-const formatted: ProjectWithN[] = projects.map((p: Project, i: number) => ({
-  ...p,
-  image: p.image,
-  n: String(i + 1).padStart(3, "0"),
-}))
-
-
-
+  const formatted: ProjectWithN[] = projects.map((p: Project, i: number) => ({
+    ...p,
+    image: p.image,
+    n: String(i + 1).padStart(3, "0"),
+  }))
 
   const totalCards = formatted.length;
   const currentYear = new Date().getFullYear();
@@ -95,9 +92,7 @@ const formatted: ProjectWithN[] = projects.map((p: Project, i: number) => ({
   };
 
   const pillClass =
-  "rounded-2xl border border-white/12 bg-white/[0.02] px-4 py-2 text-sm text-white/75 backdrop-blur-sm transition-colors hover:border-white/18 hover:bg-white/[0.05] hover:text-white/90";
-
-
+    "rounded-2xl border border-white/12 bg-white/[0.02] px-4 py-2 text-sm text-white/75 backdrop-blur-sm transition-colors hover:border-white/18 hover:bg-white/[0.05] hover:text-white/90";
 
   // Reusable card wrapper styles
   const getCardWrapperClass = (isActive: boolean) =>
@@ -111,8 +106,6 @@ const formatted: ProjectWithN[] = projects.map((p: Project, i: number) => ({
     <>
       <section className="pt-4">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          
-
           {/* Cards Container */}
           <div className="relative mt-10">
             {formatted.map((p, i) => {
@@ -169,123 +162,122 @@ const formatted: ProjectWithN[] = projects.map((p: Project, i: number) => ({
 
                     {/* Content */}
                     <div className="relative z-10">
-                      
-                        {/* Header lip */}
-                        <div
-                          className="flex items-center justify-between px-6"
-                          style={{
-                            height: headerH,
-                            borderBottom: isActive
-                              ? "1px solid rgba(255,255,255,0.1)"
-                              : "1px solid rgba(255,255,255,0.06)",
-                          }}
+                      {/* Header lip */}
+                      <div
+                        className="flex items-center justify-between px-6"
+                        style={{
+                          height: headerH,
+                          borderBottom: isActive
+                            ? "1px solid rgba(255,255,255,0.1)"
+                            : "1px solid rgba(255,255,255,0.06)",
+                        }}
+                      >
+                        <div className="flex items-center gap-3 text-xs">
+                          <span
+                            className={`font-mono font-medium transition-colors duration-300 ${
+                              isActive ? "text-sky-400" : "text-sky-400/60"
+                            }`}
+                          >
+                            {p.n}
+                          </span>
+                          <span className="text-white/20">•</span>
+                          <span
+                            className={`rounded-full border px-3 py-1 transition-all duration-300 ${
+                              isActive
+                                ? "border-white/12 bg-white/[0.06] text-sky-300"
+                                : "border-white/8 bg-white/[0.03] text-sky-300/60"
+                            }`}
+                          >
+                            {p.year}
+                          </span>
+                          <span className="text-white/20">•</span>
+                          <span
+                            className={`transition-colors duration-300 ${
+                              isActive ? "text-white/70" : "text-white/50"
+                            }`}
+                          >
+                            {p.outcome}
+                          </span>
+                        </div>
+
+                        <Link
+                          href={`/projects/${p.slug}`}
+                          className={`flex items-center gap-2 text-sm transition-colors duration-300 hover:text-white ${
+                            isActive ? "text-white/85" : "text-white/50"
+                          }`}
                         >
-                          <div className="flex items-center gap-3 text-xs">
-                            <span
-                              className={`font-mono font-medium transition-colors duration-300 ${
-                                isActive ? "text-sky-400" : "text-sky-400/60"
+                          <span>Read</span>
+                          <span
+                            aria-hidden
+                            className="transition-transform duration-300 hover:translate-x-0.5 hover:-translate-y-0.5"
+                          >
+                            ↗
+                          </span>
+                        </Link>
+                      </div>
+
+                      {/* Body - 👈 ADJUST HERE: p-8 and gap-8 (was p-6 gap-6) */}
+                      <div className="grid grid-cols-1 gap-8 p-8 lg:grid-cols-2">
+                        <div className="flex flex-col justify-between">
+                          <div>
+                            <h3
+                              className={`text-2xl font-semibold tracking-tight transition-colors duration-300 ${
+                                isActive ? "text-white" : "text-white/90"
                               }`}
                             >
-                              {p.n}
-                            </span>
-                            <span className="text-white/20">•</span>
-                            <span
-                              className={`rounded-full border px-3 py-1 transition-all duration-300 ${
-                                isActive
-                                  ? "border-white/12 bg-white/[0.06] text-sky-300"
-                                  : "border-white/8 bg-white/[0.03] text-sky-300/60"
+                              {p.title}
+                            </h3>
+                            <p
+                              className={`mt-3 text-sm leading-relaxed transition-colors duration-300 ${
+                                isActive ? "text-white/75" : "text-white/60"
                               }`}
                             >
-                              {p.year}
-                            </span>
-                            <span className="text-white/20">•</span>
-                            <span
-                              className={`transition-colors duration-300 ${
-                                isActive ? "text-white/70" : "text-white/50"
-                              }`}
-                            >
-                              {p.outcome}
-                            </span>
+                              {p.description}
+                            </p>
                           </div>
 
-                          <Link
-                       href={`/projects/${p.slug}`}
-                className={`flex items-center gap-2 text-sm transition-colors duration-300 hover:text-white ${
-                isActive ? "text-white/85" : "text-white/50"
-               }`}
->
-  <span>Read</span>
-  <span
-                              aria-hidden
-                              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                            >
-                              ↗
-                            </span>
-                          </Link>
-                        </div>
-
-                        {/* Body */}
-                        <div className="grid gap-6 p-6 lg:grid-cols-[1fr,1.1fr]">
-                          <div className="flex flex-col justify-between">
-                            <div>
-                              <h3
-                                className={`text-2xl font-semibold tracking-tight transition-colors duration-300 ${
-                                  isActive ? "text-white" : "text-white/90"
-                                }`}
-                              >
-                                {p.title}
-                              </h3>
-                              <p
-                                className={`mt-3 text-sm leading-relaxed transition-colors duration-300 ${
-                                  isActive ? "text-white/75" : "text-white/60"
-                                }`}
-                              >
-                                {p.description}
-                              </p>
+                          <div className="mt-5 space-y-4">
+                            <div className="flex flex-wrap gap-2">
+                              {p.tags.map((t) => (
+                                <span
+                                  key={t}
+                                  className={`rounded-full px-3 py-1 text-xs ring-1 ring-inset transition-all duration-300 ${
+                                    isActive
+                                      ? "bg-white/[0.05] text-white/85 ring-white/12"
+                                      : "bg-white/[0.03] text-white/70 ring-white/8"
+                                  }`}
+                                >
+                                  {t}
+                                </span>
+                              ))}
                             </div>
-
-                            <div className="mt-5 space-y-4">
-                              <div className="flex flex-wrap gap-2">
-                                {p.tags.map((t) => (
-                                  <span
-                                    key={t}
-                                    className={`rounded-full px-3 py-1 text-xs ring-1 ring-inset transition-all duration-300 ${
-                                      isActive
-                                        ? "bg-white/[0.05] text-white/85 ring-white/12"
-                                        : "bg-white/[0.03] text-white/70 ring-white/8"
-                                    }`}
-                                  >
-                                    {t}
-                                  </span>
-                                ))}
-                              </div>
-                              <div
-                                className={`text-sm transition-colors duration-300 ${
-                                  isActive ? "text-sky-300" : "text-sky-300/60"
-                                }`}
-                              >
-                                Read case study <span aria-hidden></span>
-                              </div>
+                            <div
+                              className={`text-sm transition-colors duration-300 ${
+                                isActive ? "text-sky-300" : "text-sky-300/60"
+                              }`}
+                            >
+                              Read case study <span aria-hidden></span>
                             </div>
                           </div>
-
-                          {/* Image */}
-                          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-white/[0.03] lg:aspect-auto lg:min-h-[220px]">
-                            {p.image && (
-                              <img
-                                src={p.image}
-                                alt={p.title}
-                                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                              />
-                            )}
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#171d27]/30 to-transparent" />
-                          </div>
                         </div>
+
+                        {/* Image - 👈 ADJUST HERE: h-[360px] (was h-[280px]) */}
+                        <div className="relative h-[360px] overflow-hidden rounded-2xl bg-white/[0.03]">
+                          {p.image && (
+                            <img
+                              src={p.image}
+                              alt={p.title}
+                              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                            />
+                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#171d27]/30 to-transparent" />
+                        </div>
+                      </div>
                     </div>
                   </div>
 
                   {/* Spacer - creates scroll room for next card (not on last card) */}
-                  {i < totalCards - 1 && <div style={{ height: headerH + 24 }} />}
+                  {i < totalCards - 1 && <div style={{ height: headerH + -10 }} />}
                 </div>
               );
             })}
@@ -293,15 +285,15 @@ const formatted: ProjectWithN[] = projects.map((p: Project, i: number) => ({
             {/* ==================== FOOTER CARD ==================== */}
             <div
               ref={footerRef}
-              className="sticky transition-[top] duration-500 ease-out"
+              className="sticky transition-[top] duration-500 ease-out mt-20"
               style={{
-                top: activeIndex === totalCards ? stickyTopBase : stickyTopBase + totalCards * headerH,
-                zIndex: 100 + totalCards,
-              }}
+  top: activeIndex === totalCards ? 60 : stickyTopBase + totalCards * headerH,
+  zIndex: 100 + totalCards,
+}}
             >
               <div
                 className={getCardWrapperClass(activeIndex === totalCards)}
-                style={{ height: `calc(100vh - ${stickyTopBase}px)` }}
+                style={{ height: `calc(100vh - 60px)` }}
               >
                 {/* Halo glow */}
                 <div
@@ -384,10 +376,11 @@ const formatted: ProjectWithN[] = projects.map((p: Project, i: number) => ({
                   </div>
 
                   {/* Body */}
-                  <div
-                    className="flex flex-col items-center justify-center px-6 text-center"
-                    style={{ height: `calc(100% - ${headerH}px)` }}
-                  >
+                  {/* Body */}
+<div
+  className="flex flex-col items-center justify-start pt-24 px-6 text-center"
+  style={{ height: `calc(100% - ${headerH}px)` }}
+>
                     <h3
                       className={`text-3xl font-semibold tracking-tight transition-colors duration-300 sm:text-4xl lg:text-5xl ${
                         activeIndex === totalCards ? "text-white" : "text-white/90"
@@ -407,7 +400,6 @@ const formatted: ProjectWithN[] = projects.map((p: Project, i: number) => ({
                       Open to PM roles where design taste and technical execution matter.
                     </p>
 
-                    
                     {/* Links */}
                     <div className="mt-8 flex flex-col items-center justify-center gap-4">
                       <div className="flex flex-wrap items-center justify-center gap-3">
@@ -433,7 +425,7 @@ const formatted: ProjectWithN[] = projects.map((p: Project, i: number) => ({
                           GitHub
                         </ScrambleLink>
                       </div>
-                      </div>
+                    </div>
 
                     {/* Divider */}
                     <div className="mx-auto mt-10 h-px w-full max-w-xs bg-gradient-to-r from-transparent via-white/10 to-transparent" />
