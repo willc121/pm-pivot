@@ -11,9 +11,9 @@ export default function Home() {
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(6,7,10,0.2),rgba(6,7,10,0.85))]" />
       </div>
 
-      <section className="mx-auto max-w-7xl px-6 pt-24">
+      <section className="mx-auto max-w-7xl px-6 pt-10">
         <p className="text-sm text-white/60">
-          Product builder • technical depth • design-forward execution
+          Lifelong Learner • Product Builder • Bias to Execute
         </p>
 
         <h1 className="mt-5 text-5xl font-semibold tracking-tight sm:text-7xl">
@@ -23,9 +23,9 @@ export default function Home() {
         </h1>
 
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/70">
-          I build clear product narratives and sharp prototypes. I'm pivoting into
-          product management and I like work at the intersection of UX, data, and
-          shipping.
+          I’m a former Army Blackhawk pilot who moved into tech after earning my MBA at MIT Sloan. I’m currently
+          a Product Marketing Manager at Microsoft and working toward a product management role. I like turning 
+          messy problems into clear product narratives, quick prototypes, and data informed iterations.
         </p>
 
         

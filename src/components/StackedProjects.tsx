@@ -109,7 +109,7 @@ const formatted: ProjectWithN[] = projects.map((p: Project, i: number) => ({
 
   return (
     <>
-      <section className="pt-16">
+      <section className="pt-4">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           
 
@@ -264,7 +264,7 @@ const formatted: ProjectWithN[] = projects.map((p: Project, i: number) => ({
                                   isActive ? "text-sky-300" : "text-sky-300/60"
                                 }`}
                               >
-                                Read case study <span aria-hidden>↗</span>
+                                Read case study <span aria-hidden></span>
                               </div>
                             </div>
                           </div>
