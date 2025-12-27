@@ -45,3 +45,33 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes spin-rotor {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-spin-rotor {
+  animation: spin-rotor 0.5s linear infinite;
+}
+
+.animate-spin-rotor-fast {
+  animation: spin-rotor 0.3s linear infinite;
+}
