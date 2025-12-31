@@ -400,7 +400,7 @@ export default function StackedProjects() {
                         activeIndex === totalCards ? "text-white/60" : "text-white/50"
                       }`}
                     >
-                      Open to PM roles where design taste and technical execution matter.
+                      Open to PM roles. Let's win.
                     </p>
 
                     {/* Links */}
