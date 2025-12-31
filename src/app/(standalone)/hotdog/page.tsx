@@ -168,10 +168,11 @@ export default function HotDogPage() {
     setStatus('idle')
     setError(null)
     stopCamera()
-    
+
     // Reset CAPTCHA
   if ((window as any).turnstile && turnstileRef.current) {
     ;(window as any).turnstile.reset(turnstileRef.current)
+    setTurnstileToken(null)
   }
   }
 
