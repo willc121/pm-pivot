@@ -6,6 +6,8 @@ export type Project = {
   description: string
   tags: string[]
   image?: string
+  link?: string
+  external?: boolean
 }
 
 export const projects: Project[] = [
@@ -41,12 +43,14 @@ export const projects: Project[] = [
   },
   {
     slug: "hot-dog",
-    title: "Hot Dog",
+    title: "Hot Dog or Not Hot Dog",
     year: "2025",
     outcome: "Live",
     description:
-      "Built a design-forward PM portfolio using Next.js, Tailwind, and structured product narratives.",
-    tags: ["UX", "Next.js", "Tailwind"],
-    // image: "/projects/hot-dog.png",
+      "Built the iconic HBO's Silicon Valley app using GPT-Ro-mini vision API, with rate limiting, CAPTCHA protection, and cost controls.",
+    tags: ["AI", "Vision API", "Next.js"],
+    link: "/hotdog",
+    external: true,
+    image: "/projects/Not+hotdog.webp",
   },
 ]

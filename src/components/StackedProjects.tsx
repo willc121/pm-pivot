@@ -201,12 +201,15 @@ export default function StackedProjects() {
                         </div>
 
                         <Link
-                          href={`/projects/${p.slug}`}
+                          href={p.link || `/projects/${p.slug}`}
+                          target={p.external ? "_blank" : undefined}
+                          rel={p.external ? "noopener noreferrer" : undefined}
+
                           className={`flex items-center gap-2 text-sm transition-colors duration-300 hover:text-white ${
                             isActive ? "text-white/85" : "text-white/50"
                           }`}
                         >
-                          <span>Read</span>
+                          <span>Check it out</span>
                           <span
                             aria-hidden
                             className="transition-transform duration-300 hover:translate-x-0.5 hover:-translate-y-0.5"
@@ -256,7 +259,7 @@ export default function StackedProjects() {
                                 isActive ? "text-sky-300" : "text-sky-300/60"
                               }`}
                             >
-                              Read case study <span aria-hidden></span>
+    
                             </div>
                           </div>
                         </div>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import "./globals.css";
-import ScrambleLink from "../components/ScrambleLink";
+import "../globals.css";
+import ScrambleLink from "../../components/ScrambleLink";
 
 export const metadata: Metadata = {
   title: "Will Chung | PM Portfolio",

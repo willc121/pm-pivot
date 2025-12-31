@@ -1,6 +1,6 @@
 import Link from "next/link";
-import StackedProjects from "../components/StackedProjects";
-import ScrambleLink from "../components/ScrambleLink";
+import StackedProjects from "../../components/StackedProjects";
+import ScrambleLink from "../../components/ScrambleLink";
 
 export default function Home() {
   return (
