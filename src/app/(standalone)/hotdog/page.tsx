@@ -12,11 +12,18 @@ export default function HotDogPage() {
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
   const [cameraActive, setCameraActive] = useState(false)
   const [cameraReady, setCameraReady] = useState(false)
+  const [facingMode, setFacingMode] = useState<'user' | 'environment'>('user')
 
   const turnstileRef = useRef<HTMLDivElement>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
   const streamRef = useRef<MediaStream | null>(null)
+
+  // Detect mobile and set default camera
+  useEffect(() => {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+    setFacingMode(isMobile ? 'environment' : 'user')
+  }, [])
 
   useEffect(() => {
     const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
@@ -52,7 +59,7 @@ export default function HotDogPage() {
         video: {
           width: { ideal: 640 },
           height: { ideal: 480 },
-          facingMode: 'user',
+          facingMode: facingMode,
         },
       })
 
@@ -84,6 +91,41 @@ export default function HotDogPage() {
     }
     setCameraActive(false)
     setCameraReady(false)
+  }
+
+  const flipCamera = async () => {
+    const newMode = facingMode === 'user' ? 'environment' : 'user'
+    setFacingMode(newMode)
+    
+    // Stop current stream and restart with new camera
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach(track => track.stop())
+    }
+    
+    setCameraReady(false)
+    
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: {
+          width: { ideal: 640 },
+          height: { ideal: 480 },
+          facingMode: newMode,
+        },
+      })
+      
+      streamRef.current = stream
+      
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream
+        videoRef.current.onloadedmetadata = () => {
+          videoRef.current?.play()
+          setCameraReady(true)
+        }
+      }
+    } catch (err) {
+      console.error('Camera flip error:', err)
+      setError('Could not switch camera.')
+    }
   }
 
   const capturePhoto = () => {
@@ -170,10 +212,10 @@ export default function HotDogPage() {
     stopCamera()
 
     // Reset CAPTCHA
-  if ((window as any).turnstile && turnstileRef.current) {
-    ;(window as any).turnstile.reset(turnstileRef.current)
-    setTurnstileToken(null)
-  }
+    if ((window as any).turnstile && turnstileRef.current) {
+      ;(window as any).turnstile.reset(turnstileRef.current)
+      setTurnstileToken(null)
+    }
   }
 
   // ==================== SILICON VALLEY STYLE RESULT SCREEN ====================
@@ -327,7 +369,7 @@ export default function HotDogPage() {
                     width: '100%',
                     height: '480px',
                     objectFit: 'cover',
-                    transform: 'scaleX(-1)',
+                    transform: facingMode === 'user' ? 'scaleX(-1)' : 'none',
                   }}
                 />
                 {!cameraReady && (
@@ -339,6 +381,15 @@ export default function HotDogPage() {
                   </div>
                 )}
                 <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-3">
+                  {/* Flip camera button */}
+                  <button
+                    onClick={flipCamera}
+                    className="w-10 h-10 bg-neutral-700 hover:bg-neutral-600 rounded-full flex items-center justify-center text-white shadow-lg transition-all"
+                  >
+                    🔄
+                  </button>
+                  
+                  {/* Capture button */}
                   <button
                     onClick={capturePhoto}
                     disabled={!cameraReady}
@@ -348,6 +399,8 @@ export default function HotDogPage() {
                   >
                     <div className={`w-11 h-11 rounded-full ${cameraReady ? 'bg-red-500' : 'bg-neutral-500'}`} />
                   </button>
+                  
+                  {/* Close button */}
                   <button
                     onClick={stopCamera}
                     className="w-10 h-10 bg-neutral-700 hover:bg-neutral-600 rounded-full flex items-center justify-center text-white shadow-lg transition-all"
