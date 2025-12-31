@@ -8,14 +8,14 @@ export default function StandaloneLayout({
 }) {
   return (
     <html lang="en">
-      <head>
+      <head />
+      <body>
+        {children}
         <Script 
-          src="https://challenges.cloudflare.com/turnstile/v0/api.js" 
-          async 
-          defer 
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+          strategy="beforeInteractive"
         />
-      </head>
-      <body>{children}</body>
+      </body>
     </html>
   );
 }
