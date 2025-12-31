@@ -4,9 +4,11 @@ import "../globals.css";
 import ScrambleLink from "../../components/ScrambleLink";
 
 export const metadata: Metadata = {
-  title: "Will Chung | PM Portfolio",
-  description: "Product management portfolio and projects for Will Chung.",
+  title: "Will Chung | Pilot to Product",
+  description: "Former Army Blackhawk pilot pivoting into product management. Product management portfolio and projects for Will Chung.",
 };
+
+"Former Army Blackhawk pilot pivoting into product management. Building things. Breaking things."
 
 const navLinks = [
   { href: "mailto:hello@willchung.io", label: "Email", external: false },
