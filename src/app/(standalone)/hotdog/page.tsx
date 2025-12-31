@@ -32,7 +32,7 @@ export default function HotDogPage() {
         theme: 'dark',
       })
     }
-  }, [])
+  }, [status])
 
   useEffect(() => {
     return () => {
