@@ -32,8 +32,8 @@ export const projects: Project[] = [
     // image: "/projects/ai-evals.png",
   },
   {
-    slug: "pm-portfolio",
-    title: "PM Portfolio",
+    slug: "using-mcp",
+    title: "Garmin MCP Server",
     year: "2025",
     outcome: "Live",
     description:
@@ -43,12 +43,12 @@ export const projects: Project[] = [
   },
   {
     slug: "hot-dog",
-    title: "Hot Dog or Not Hot Dog",
+    title: "Hotdog or Not Hotdog",
     year: "2025",
     outcome: "Live",
     description:
       "Built the iconic HBO's Silicon Valley app using GPT-Ro-mini vision API, with rate limiting, CAPTCHA protection, and cost controls.",
-    tags: ["AI", "Vision API", "Next.js"],
+    tags: ["AI", "Vision API", "Next.js", "hotdog", "not hotdog"],
     link: "/hotdog",
     external: true,
     image: "/projects/Not+hotdog.webp",
