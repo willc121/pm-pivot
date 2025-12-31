@@ -3,9 +3,6 @@ import { kv } from '@vercel/kv'
 import OpenAI from 'openai'
 
 const DAILY_LIMIT = 5
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-})
 
 // Get rate limit key for today
 function getRateLimitKey(ip: string): string {
@@ -66,6 +63,10 @@ async function checkRateLimit(ip: string): Promise<{ allowed: boolean; remaining
 
 // Classify image using GPT-4o-mini
 async function classifyImage(base64Image: string): Promise<boolean> {
+  const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  })
+
   const imageData = base64Image.replace(/^data:image\/\w+;base64,/, '')
   
   const response = await openai.chat.completions.create({
