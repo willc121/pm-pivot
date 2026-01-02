@@ -12,23 +12,12 @@ export type Project = {
 }
 
 export const projects: Project[] = [
-  //{
-   // slug: "agent-store",
-    // title: "Agent Store GTM",
-    //year: "2024",
-    //outcome: "Shipped",
-    //description:
-    //  "Led messaging, positioning, and launch strategy for Microsoft’s Agent Store, partnering with engineering and design.",
-    //tags: ["Product", "AI", "GTM"],
-    // image: "/projects/agent-store.png",
-    //cta: "Learn more",
- // },
 
    {
     slug: "hot-dog",
     title: "Hotdog or Not Hotdog",
     year: "2025",
-    outcome: "Live",
+    outcome: "Live MVP",
     description:
       "Built the iconic HBO's Silicon Valley app using GPT-Ro-mini vision API, with rate limiting, CAPTCHA protection, and cost controls.",
     tags: ["AI", "Vision API", "Next.js", "hotdog", "not hotdog"],
@@ -51,6 +40,32 @@ export const projects: Project[] = [
     image: "/projects/garmin_mcp/mcp-tool-call.png",
     cta: "Take a look",
   },
+
+  {
+  slug: "my-cards-bingo",
+  title: "Bingo Crew: Custom Bingo Cards",
+  year: "2026",
+  outcome: "Live MVP",
+  description:
+    "Create a custom bingo card for your life, your goals, or for a game night. Save your cards, share them with friends, and download them as images.",
+  tags: ["Product", "Web App", "Sharing", "Bingo"],
+  link: "https://resolution-pro--willc121.replit.app",
+  external: true,
+  image: "/projects//bingo/bingo.png",
+  cta: "Open app",
+},
+
+    //{
+   // slug: "agent-store",
+    // title: "Agent Store GTM",
+    //year: "2024",
+    //outcome: "Shipped",
+    //description:
+    //  "Led messaging, positioning, and launch strategy for Microsoft’s Agent Store, partnering with engineering and design.",
+    //tags: ["Product", "AI", "GTM"],
+    // image: "/projects/agent-store.png",
+    //cta: "Learn more",
+ // },
 
     {
     slug: "ai-evals",
