@@ -196,7 +196,7 @@ export default function StackedProjects() {
         : "border-white/8 bg-white/[0.03] text-sky-300/60"
     }`}
   >
-    {p.year}
+    {p.outcome}
   </span>
 </div>
 
