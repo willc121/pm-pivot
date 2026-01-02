@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import "../globals.css";
 import ScrambleLink from "../../components/ScrambleLink";
 
 export const metadata: Metadata = {
   title: "Will Chung | Pilot to Product",
-  description: "Former Army Blackhawk pilot pivoting into product management. Product management portfolio and projects for Will Chung.",
+  description: "Former Army Blackhawk pilot pivoting into product management. Building things. Breaking things.",
 };
 
-"Former Army Blackhawk pilot pivoting into product management. Building things. Breaking things."
+
 
 const navLinks = [
   { href: "mailto:hello@willchung.io", label: "Email", external: false },
@@ -29,12 +30,31 @@ export default function RootLayout({
           <header className="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur">
             <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between py-4">
+                {/* Logo only*/}
                 <Link
                   href="/"
-                  className="text-xs font-semibold uppercase tracking-[0.3em] text-sky-400 hover:text-sky-300 transition-colors"
+                  className="group flex items-center"
+                  aria-label="Home"
                 >
-                  Will Chung
+                 <span className="relative h-10 w-10 overflow-hidden rounded-lg
+                  bg-white/12
+                  ring-1 ring-sky-300/45
+                  shadow-[0_0_0_1px_rgba(56,189,248,0.22),0_12px_30px_rgba(0,0,0,0.55)]
+                  transition
+                  group-hover:bg-white/16
+                  group-hover:ring-sky-200/65
+                  group-hover:shadow-[0_0_0_1px_rgba(56,189,248,0.25),0_10px_26px_rgba(0,0,0,0.45)]"
+                  >
+                    <Image
+                      src="/icon.png"   // put your WC image in /public/wc.png
+                      alt="WC"
+                      fill
+                      className="object-contain brightness-150 contrast-125 saturate-110"
+                      priority
+                    />
+                  </span>
                 </Link>
+                  
 
                 <nav className="flex flex-wrap items-center gap-6 text-sm text-slate-300">
                   {navLinks.map((link) => (
