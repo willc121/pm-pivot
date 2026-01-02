@@ -331,7 +331,7 @@ const GarminChat = () => {
             </div>
             <div>
               <h3 className="font-semibold">Ask About My Health Data</h3>
-              <p className="text-sm text-blue-100">10 years of Garmin tracking, powered by AI</p>
+              <p className="text-sm text-blue-100">9 years of Garmin tracking, powered by AI</p>
             </div>
           </div>
           {remainingQuestions !== null && (
@@ -821,7 +821,7 @@ export default function GarminPage() {
         </div>
 
           <div>
-          <p className="text-xs text-gray-400 mb-2">Tool call returning real sleep data from 2019</p>
+          <p className="text-xs text-gray-400 mb-2">Tool call returning real activity count from 2025</p>
           <img 
             src="/projects/garmin_mcp/mcp-tool-call-3.png" 
             alt="Claude calling get_activities tool and returning activity data"
