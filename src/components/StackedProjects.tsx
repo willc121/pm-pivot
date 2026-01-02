@@ -182,12 +182,13 @@ export default function StackedProjects() {
   </span>
   <span className="text-white/20">•</span>
   <span
-    className={`font-medium transition-colors duration-300 ${
-      isActive ? "text-white/90" : "text-white/60"
-    }`}
-  >
-    {p.title}
-  </span>
+  className={`font-semibold text-sm sm:text-xl md:text-2xl transition-colors duration-300 ${
+    isActive ? "text-white/90" : "text-white/60"
+  }`}
+>
+  {p.title}
+</span>
+
   <span className="text-white/20">•</span>
   <span
     className={`rounded-full border px-3 py-1 transition-all duration-300 ${
