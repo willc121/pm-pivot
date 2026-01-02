@@ -45,7 +45,7 @@ export const projects: Project[] = [
   slug: "my-cards-bingo",
   title: "Bingo Crew: Custom Bingo Cards",
   year: "2026",
-  outcome: "Live MVP",
+  outcome: "Prototype",
   description:
     "Create a custom bingo card for your life, your goals, or for a game night. Save your cards, share them with friends, and download them as images.",
   tags: ["Product", "Web App", "Sharing", "Bingo"],
