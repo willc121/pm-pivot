@@ -173,32 +173,32 @@ export default function StackedProjects() {
                         }}
                       >
                         <div className="flex items-center gap-3 text-xs">
-                          <span
-                            className={`font-mono font-medium transition-colors duration-300 ${
-                              isActive ? "text-sky-400" : "text-sky-400/60"
-                            }`}
-                          >
-                            {p.n}
-                          </span>
-                          <span className="text-white/20">•</span>
-                          <span
-                            className={`rounded-full border px-3 py-1 transition-all duration-300 ${
-                              isActive
-                                ? "border-white/12 bg-white/[0.06] text-sky-300"
-                                : "border-white/8 bg-white/[0.03] text-sky-300/60"
-                            }`}
-                          >
-                            {p.year}
-                          </span>
-                          <span className="text-white/20">•</span>
-                          <span
-                            className={`transition-colors duration-300 ${
-                              isActive ? "text-white/70" : "text-white/50"
-                            }`}
-                          >
-                            {p.outcome}
-                          </span>
-                        </div>
+  <span
+    className={`font-mono font-medium transition-colors duration-300 ${
+      isActive ? "text-sky-400" : "text-sky-400/60"
+    }`}
+  >
+    {p.n}
+  </span>
+  <span className="text-white/20">•</span>
+  <span
+    className={`font-medium transition-colors duration-300 ${
+      isActive ? "text-white/90" : "text-white/60"
+    }`}
+  >
+    {p.title}
+  </span>
+  <span className="text-white/20">•</span>
+  <span
+    className={`rounded-full border px-3 py-1 transition-all duration-300 ${
+      isActive
+        ? "border-white/12 bg-white/[0.06] text-sky-300"
+        : "border-white/8 bg-white/[0.03] text-sky-300/60"
+    }`}
+  >
+    {p.year}
+  </span>
+</div>
 
                         <Link
                           href={p.link || `/projects/${p.slug}`}
@@ -209,7 +209,7 @@ export default function StackedProjects() {
                             isActive ? "text-white/85" : "text-white/50"
                           }`}
                         >
-                          <span>Check it out</span>
+                          <span>{p.cta || "Check it out"}</span>
                           <span
                             aria-hidden
                             className="transition-transform duration-300 hover:translate-x-0.5 hover:-translate-y-0.5"

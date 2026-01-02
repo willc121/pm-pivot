@@ -8,6 +8,7 @@ export type Project = {
   image?: string
   link?: string
   external?: boolean
+  cta?: string;
 }
 
 export const projects: Project[] = [
@@ -20,6 +21,7 @@ export const projects: Project[] = [
       "Led messaging, positioning, and launch strategy for Microsoft’s Agent Store, partnering with engineering and design.",
     tags: ["Product", "AI", "GTM"],
     // image: "/projects/agent-store.png",
+    cta: "Learn more",
   },
   {
     slug: "ai-evals",
@@ -32,14 +34,16 @@ export const projects: Project[] = [
     // image: "/projects/ai-evals.png",
   },
   {
-    slug: "using-mcp",
+    slug: "garmin_mcp",
     title: "Garmin MCP Server",
     year: "2025",
     outcome: "Live",
     description:
-      "Built a design-forward PM portfolio using Next.js, Tailwind, and structured product narratives.",
-    tags: ["UX", "Next.js", "Tailwind"],
-    // image: "/projects/pm-portfolio.png",
+      "An MCP server that connects 9 years of Garmin health data to Claude Desktop. Ask questions in plain English, get answers from real data.",
+    tags: ["MCP", "Claude", "Next.js", "Supabase"],
+    link: "/garmin_mcp",
+    external: true,
+    image: "/projects/garmin_mcp/mcp-tool-call.png",
   },
   {
     slug: "hot-dog",
@@ -52,5 +56,6 @@ export const projects: Project[] = [
     link: "/hotdog",
     external: true,
     image: "/projects/hotdogornot/Not+hotdog.webp",
+    cta: "Try it out",
   },
 ]
