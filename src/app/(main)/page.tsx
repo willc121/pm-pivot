@@ -26,7 +26,7 @@ export default function Home() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/70">
-              I'm a former Army Medical Evacuation Blackhawk pilot who pivoted into tech after my MBA at MIT Sloan. I'm now
+              I'm a former Army MEDEVAC Blackhawk pilot who pivoted into tech after my MBA at MIT Sloan. I'm now
               a Product Marketing Manager at Microsoft, working toward a product management role. I'm obsessed with turning ambiguity 
               into momentum: clear narratives, rapid prototypes, and data-informed iteration.
             </p>
