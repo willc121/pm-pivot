@@ -49,6 +49,7 @@ export const projects: Project[] = [
     link: "/garmin_mcp",
     external: true,
     image: "/projects/garmin_mcp/mcp-tool-call.png",
+    cta: "Take a look",
   },
 
     {
