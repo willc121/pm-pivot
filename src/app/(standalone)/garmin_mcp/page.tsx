@@ -1091,7 +1091,7 @@ export default function GarminPage() {
             <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 md:p-8 border border-gray-700/50">
               <h2 className="text-xl font-semibold text-white mb-4">About This Project</h2>
               <p className="text-gray-300">
-                After wearing a Garmin watch for nearly <strong className="text-white">10 years</strong>, I had accumulated
+                After wearing a Garmin watch for nearly <strong className="text-white">9 years</strong>, I had accumulated
                 a massive amount of health data but no easy way to query it. I wanted to ask simple questions like
                 "How has my fitness improved this year?" or "Am I overtraining?" - but Garmin Connect doesn't let you
                 do that.
