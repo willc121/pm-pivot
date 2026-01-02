@@ -843,8 +843,8 @@ export default function GarminPage() {
       </ol>
     </div>
   </div>
-)}
 
+)}
 
 
         {/* Dashboard Tab */}
@@ -1150,155 +1150,80 @@ export default function GarminPage() {
               </div>
 
               {/* MCP Card */}
-              <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-5 border border-gray-700/50">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2 bg-blue-500/20 rounded-lg">
-                    <Sparkles className="w-5 h-5 text-blue-400" />
-                  </div>
-                  <h3 className="font-semibold text-white">Natural Language</h3>
-                </div>
-                <p className="text-sm text-gray-400 mb-3">The Chat tab + MCP Server</p>
-                <ul className="text-sm text-gray-300 space-y-2">
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-400 mt-1">•</span>
-                    <span>Ask anything in plain English</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-400 mt-1">•</span>
-                    <span>AI interprets and queries the data</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-400 mt-1">•</span>
-                    <span>MCP server exposes data to Claude</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
+<div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-5 border border-gray-700/50">
+  <div className="flex items-center gap-3 mb-3">
+    <div className="p-2 bg-blue-500/20 rounded-lg">
+      <Sparkles className="w-5 h-5 text-blue-400" />
+    </div>
+    <h3 className="font-semibold text-white">Natural Language</h3>
+  </div>
+  <p className="text-sm text-gray-400 mb-3">The Chat tab + MCP Server</p>
+  <ul className="text-sm text-gray-300 space-y-2">
+    <li className="flex items-start gap-2">
+      <span className="text-blue-400 mt-1">•</span>
+      <span>Ask anything in plain English</span>
+    </li>
+    <li className="flex items-start gap-2">
+      <span className="text-blue-400 mt-1">•</span>
+      <span>AI interprets and queries the data</span>
+    </li>
+    <li className="flex items-start gap-2">
+      <span className="text-blue-400 mt-1">•</span>
+      <button 
+        onClick={() => setActiveTab('MCP')} 
+        className="text-blue-400 hover:underline"
+      >
+        See how MCP works →
+      </button>
+    </li>
+  </ul>
+</div>
+</div>
 
-            {/* What is MCP */}
-            <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50">
-              <h3 className="text-lg font-semibold text-white mb-3">What is MCP?</h3>
-              <p className="text-gray-300 mb-4">
-                <strong className="text-white">Model Context Protocol (MCP)</strong> is a standard created by Anthropic
-                that lets you expose data and tools to LLMs. Instead of copy-pasting data into a chat, you build a
-                server that Claude (or other AI) can query directly.
-              </p>
+{/* Tech Stack & Data */}
+<div className="grid md:grid-cols-2 gap-4">
+  <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-5 border border-gray-700/50">
+    <h3 className="font-semibold text-white mb-3">Tech Stack</h3>
+    <div className="flex flex-wrap gap-2">
+      {['TypeScript', 'Next.js', 'React', 'Supabase', 'PostgreSQL', 'Tailwind CSS', 'OpenAI API', 'MCP'].map(
+        (tech) => (
+          <span
+            key={tech}
+            className="bg-gray-700 text-gray-200 text-xs font-medium px-3 py-1 rounded-full border border-gray-600"
+          >
+            {tech}
+          </span>
+        )
+      )}
+    </div>
+  </div>
 
-              {/* Architecture Diagram */}
-              <div className="bg-gray-900/50 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-                <div className="text-gray-400 mb-2"># Local setup (Claude Desktop)</div>
-                <div className="flex items-center gap-2 text-gray-300 flex-wrap">
-                  <span className="bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Claude Desktop</span>
-                  <span className="text-gray-500">→</span>
-                  <span className="bg-green-500/20 text-green-400 px-2 py-1 rounded">MCP Server</span>
-                  <span className="text-gray-500">→</span>
-                  <span className="bg-purple-500/20 text-purple-400 px-2 py-1 rounded">Garmin JSON</span>
-                </div>
-
-                <div className="text-gray-400 mt-4 mb-2"># This website</div>
-                <div className="flex items-center gap-2 text-gray-300 flex-wrap">
-                  <span className="bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Chat UI</span>
-                  <span className="text-gray-500">→</span>
-                  <span className="bg-green-500/20 text-green-400 px-2 py-1 rounded">Next.js API</span>
-                  <span className="text-gray-500">→</span>
-                  <span className="bg-orange-500/20 text-orange-400 px-2 py-1 rounded">OpenAI</span>
-                  <span className="text-gray-500">+</span>
-                  <span className="bg-purple-500/20 text-purple-400 px-2 py-1 rounded">Supabase</span>
-                </div>
-              </div>
-
-              <p className="text-gray-400 text-sm mt-4">
-                The MCP server runs locally with Claude Desktop for private queries. This website is a public demo
-                that uses the same data (stored in Supabase) with an OpenAI-powered chat interface.
-              </p>
-            </div>
-
-            {/* Example Queries */}
-            <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50">
-              <h3 className="text-lg font-semibold text-white mb-3">Things You Can Ask</h3>
-              <div className="grid sm:grid-cols-2 gap-2">
-                {[
-                  "What's my VO2 max trend this year?",
-                  'Am I overtraining? Check my load.',
-                  'How much did I sleep last week?',
-                  'What are my predicted race times?',
-                  'Compare my cycling vs running volume',
-                  "What's my fitness age?",
-                ].map((q, i) => (
-                  <div key={i} className="flex items-center gap-2 text-sm">
-                    <span className="text-blue-400">→</span>
-                    <span className="text-gray-300">{q}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Tech Stack & Data */}
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-5 border border-gray-700/50">
-                <h3 className="font-semibold text-white mb-3">Tech Stack</h3>
-                <div className="flex flex-wrap gap-2">
-                  {['TypeScript', 'Next.js', 'React', 'Supabase', 'PostgreSQL', 'Tailwind CSS', 'OpenAI API', 'MCP'].map(
-                    (tech) => (
-                      <span
-                        key={tech}
-                        className="bg-gray-700 text-gray-200 text-xs font-medium px-3 py-1 rounded-full border border-gray-600"
-                      >
-                        {tech}
-                      </span>
-                    )
-                  )}
-                </div>
-              </div>
-
-              <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-5 border border-gray-700/50">
-                <h3 className="font-semibold text-white mb-3">Data Tracked</h3>
-                <div className="space-y-1 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Activities</span>
-                    <span className="text-white font-medium">{data.totalActivities.toLocaleString()}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">VO2 Max readings</span>
-                    <span className="text-white font-medium">{data.vo2Max.length.toLocaleString()}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Sleep nights</span>
-                    <span className="text-white font-medium">{data.sleepStats.total_nights.toLocaleString()}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Date range</span>
-                    <span className="text-white font-medium">
-                      {data.dateRange.start.split('-')[0]}-{data.dateRange.end.split('-')[0]}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* CTA */}
-            <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-5 text-white">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div>
-                  <h3 className="font-semibold">Want to build your own?</h3>
-                  <p className="text-sm text-blue-100 mt-1">
-                    The MCP server is open source. Clone it and connect your own Garmin data.
-                  </p>
-                </div>
-                <a
-                  href="https://github.com/willc121/garmin-mcp-server"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 transition-colors px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap"
-                >
-                  <Github className="w-4 h-4" />
-                  View on GitHub
-                </a>
-              </div>
-            </div>
+  <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-5 border border-gray-700/50">
+    <h3 className="font-semibold text-white mb-3">Data Tracked</h3>
+    <div className="space-y-1 text-sm">
+      <div className="flex justify-between">
+        <span className="text-gray-400">Activities</span>
+        <span className="text-white font-medium">{data.totalActivities.toLocaleString()}</span>
+      </div>
+      <div className="flex justify-between">
+        <span className="text-gray-400">VO2 Max readings</span>
+        <span className="text-white font-medium">{data.vo2Max.length.toLocaleString()}</span>
+      </div>
+      <div className="flex justify-between">
+        <span className="text-gray-400">Sleep nights</span>
+        <span className="text-white font-medium">{data.sleepStats.total_nights.toLocaleString()}</span>
+      </div>
+      <div className="flex justify-between">
+        <span className="text-gray-400">Date range</span>
+        <span className="text-white font-medium">
+          {data.dateRange.start.split('-')[0]}-{data.dateRange.end.split('-')[0]}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
           </div>
         )}
-
         {/* Footer */}
         <footer className="mt-12 text-center text-sm text-gray-500">
           <p>
