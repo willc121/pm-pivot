@@ -809,6 +809,27 @@ export default function GarminPage() {
             onClick={() => setExpandedImage('/projects/garmin_mcp/mcp-tool-call.png')}
           />
         </div>
+
+         <div>
+          <p className="text-xs text-gray-400 mb-2">Tool call returning real sleep data from 2019</p>
+          <img 
+            src="/projects/garmin_mcp/mcp-tool-call-2.png" 
+            alt="Claude calling get_sleep_data tool and returning sleep data"
+            className="rounded-lg border border-gray-700 w-full cursor-pointer hover:border-gray-500 transition-colors"
+            onClick={() => setExpandedImage('/projects/garmin_mcp/mcp-tool-call-2.png')}
+          />
+        </div>
+
+          <div>
+          <p className="text-xs text-gray-400 mb-2">Tool call returning real sleep data from 2019</p>
+          <img 
+            src="/projects/garmin_mcp/mcp-tool-call-3.png" 
+            alt="Claude calling get_activities tool and returning activity data"
+            className="rounded-lg border border-gray-700 w-full cursor-pointer hover:border-gray-500 transition-colors"
+            onClick={() => setExpandedImage('/projects/garmin_mcp/mcp-tool-call-3.png')}
+          />
+        </div>
+
       </div>
     </div>
 
