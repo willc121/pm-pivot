@@ -12,27 +12,32 @@ export type Project = {
 }
 
 export const projects: Project[] = [
-  {
-    slug: "agent-store",
-    title: "Agent Store GTM",
-    year: "2024",
-    outcome: "Shipped",
-    description:
-      "Led messaging, positioning, and launch strategy for Microsoft’s Agent Store, partnering with engineering and design.",
-    tags: ["Product", "AI", "GTM"],
+  //{
+   // slug: "agent-store",
+    // title: "Agent Store GTM",
+    //year: "2024",
+    //outcome: "Shipped",
+    //description:
+    //  "Led messaging, positioning, and launch strategy for Microsoft’s Agent Store, partnering with engineering and design.",
+    //tags: ["Product", "AI", "GTM"],
     // image: "/projects/agent-store.png",
-    cta: "Learn more",
-  },
-  {
-    slug: "ai-evals",
-    title: "AI Evaluation Framework",
+    //cta: "Learn more",
+ // },
+
+   {
+    slug: "hot-dog",
+    title: "Hotdog or Not Hotdog",
     year: "2025",
-    outcome: "Prototype",
+    outcome: "Live",
     description:
-      "Designed an internal evaluation framework for LLM agents with clear success metrics and tradeoff analysis.",
-    tags: ["AI", "Evaluation", "Systems"],
-    // image: "/projects/ai-evals.png",
+      "Built the iconic HBO's Silicon Valley app using GPT-Ro-mini vision API, with rate limiting, CAPTCHA protection, and cost controls.",
+    tags: ["AI", "Vision API", "Next.js", "hotdog", "not hotdog"],
+    link: "/hotdog",
+    external: true,
+    image: "/projects/hotdogornot/Not+hotdog.webp",
+    cta: "Try it out",
   },
+
   {
     slug: "garmin_mcp",
     title: "Garmin MCP Server",
@@ -45,17 +50,15 @@ export const projects: Project[] = [
     external: true,
     image: "/projects/garmin_mcp/mcp-tool-call.png",
   },
-  {
-    slug: "hot-dog",
-    title: "Hotdog or Not Hotdog",
+
+    {
+    slug: "ai-evals",
+    title: "AI Evaluation Framework",
     year: "2025",
-    outcome: "Live",
+    outcome: "Work in Progress",
     description:
-      "Built the iconic HBO's Silicon Valley app using GPT-Ro-mini vision API, with rate limiting, CAPTCHA protection, and cost controls.",
-    tags: ["AI", "Vision API", "Next.js", "hotdog", "not hotdog"],
-    link: "/hotdog",
-    external: true,
-    image: "/projects/hotdogornot/Not+hotdog.webp",
-    cta: "Try it out",
+      "Designed an internal evaluation framework for LLM agents with clear success metrics and tradeoff analysis.",
+    tags: ["AI", "Evaluation", "Systems"],
+    // image: "/projects/ai-evals.png",
   },
 ]
