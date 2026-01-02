@@ -1288,6 +1288,7 @@ export default function GarminPage() {
           </p>
         </footer>
       </div>
+
 {/* Image Lightbox */}
       {expandedImage && (
         <div 
@@ -1299,7 +1300,7 @@ export default function GarminPage() {
             alt="Expanded view"
             className="max-w-full max-h-full object-contain rounded-lg"
           />
-          <p className="absolute bottom-4 text-gray-400 text-sm">Click anywhere to close</p>
+          <p className="absolute top-4 text-gray-400 text-sm">Click anywhere to close</p>
         </div>
       )}
     </main>
