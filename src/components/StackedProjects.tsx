@@ -401,7 +401,7 @@ export default function StackedProjects() {
                         activeIndex === totalCards ? "text-white/60" : "text-white/50"
                       }`}
                     >
-                      Open to PM roles where design taste and technical execution matter.
+                  
                     </p>
 
                     {/* Links */}
@@ -436,7 +436,9 @@ export default function StackedProjects() {
 
                     {/* Copyright */}
                     <p className="mt-6 font-mono text-xs text-white/30">
-                      // Built with Next.js + Tailwind, {currentYear}
+                      © {currentYear} Will Chung
+
+
                     </p>
                   </div>
                 </div>
