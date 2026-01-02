@@ -454,6 +454,7 @@ export default function GarminPage() {
   const [showAllActivities, setShowAllActivities] = useState(false);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<DashboardData | null>(null);
+  const [expandedImage, setExpandedImage] = useState<string | null>(null);
 
   // Fetch data from Supabase
   useEffect(() => {
@@ -794,7 +795,8 @@ export default function GarminPage() {
           <img 
             src="/projects/garmin_mcp/mcp-connector.png" 
             alt="Claude Desktop showing Garmin MCP connector enabled"
-            className="rounded-lg border border-gray-700 w-full"
+            className="rounded-lg border border-gray-700 w-full cursor-pointer hover:border-gray-500 transition-colors"
+            onClick={() => setExpandedImage('/projects/garmin_mcp/mcp-connector.png')}
           />
         </div>
 
@@ -803,7 +805,8 @@ export default function GarminPage() {
           <img 
             src="/projects/garmin_mcp/mcp-tool-call.png" 
             alt="Claude calling get_vo2max tool and returning fitness data"
-            className="rounded-lg border border-gray-700 w-full"
+            className="rounded-lg border border-gray-700 w-full cursor-pointer hover:border-gray-500 transition-colors"
+            onClick={() => setExpandedImage('/projects/garmin_mcp/mcp-tool-call.png')}
           />
         </div>
       </div>
@@ -1285,6 +1288,20 @@ export default function GarminPage() {
           </p>
         </footer>
       </div>
+{/* Image Lightbox */}
+      {expandedImage && (
+        <div 
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 cursor-pointer"
+          onClick={() => setExpandedImage(null)}
+        >
+          <img 
+            src={expandedImage} 
+            alt="Expanded view"
+            className="max-w-full max-h-full object-contain rounded-lg"
+          />
+          <p className="absolute bottom-4 text-gray-400 text-sm">Click anywhere to close</p>
+        </div>
+      )}
     </main>
   );
 }
