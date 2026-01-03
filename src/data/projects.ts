@@ -37,7 +37,7 @@ export const projects: Project[] = [
     tags: ["MCP", "Claude", "Next.js", "Supabase"],
     link: "/garmin_mcp",
     external: true,
-    image: "/projects/garmin_mcp/mcp-tool-call.png",
+    image: "/projects/garmin_mcp/garmin-hero-photo.png",
     cta: "Take a look",
   },
 
@@ -51,7 +51,7 @@ export const projects: Project[] = [
   tags: ["Product", "Web App", "Sharing", "Bingo"],
   link: "https://bingocrew.replit.app",
   external: true,
-  image: "/projects//bingo/bingo.png",
+  image: "/projects//bingo/bingo-2.png",
   cta: "Open app",
 },
 
