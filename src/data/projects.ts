@@ -49,7 +49,7 @@ export const projects: Project[] = [
   description:
     "Create a custom bingo card for your life, your goals, or for a game night. Save your cards, share them with friends, and download them as images.",
   tags: ["Product", "Web App", "Sharing", "Bingo"],
-  link: "https://resolution-pro--willc121.replit.app",
+  link: "https://bingocrew.replit.app",
   external: true,
   image: "/projects//bingo/bingo.png",
   cta: "Open app",
