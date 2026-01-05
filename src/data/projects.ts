@@ -69,11 +69,11 @@ export const projects: Project[] = [
 
     {
     slug: "ai-evals",
-    title: "AI Evaluation Framework",
+    title: "AI Evaluation Framework (Work in Progress)",
     year: "2025",
     outcome: "Work in Progress",
     description:
-      "Designed an internal evaluation framework for LLM agents with clear success metrics and tradeoff analysis.",
+      "Currently working on this and will share more details soon.",
     tags: ["AI", "Evaluation", "Systems"],
     // image: "/projects/ai-evals.png",
   },
