@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     siteName: "Will Chung Portfolio",
     images: [
       {
-        url: "https://www.willchung.io/og-image.png",
+        url: "https://www.willchung.io/og-image-2.png",
         width: 1200,
         height: 630,
         alt: "Will Chung - Pilot to Product",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Will Chung | Pilot to Product",
     description: "Former Army Blackhawk pilot pivoting into product management. Building things. Breaking things.",
-    images: ["https://www.willchung.io/og-image.png"],
+    images: ["https://www.willchung.io/og-image-2.png"],
   },
   metadataBase: new URL("https://www.willchung.io"),
 };
