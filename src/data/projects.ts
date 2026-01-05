@@ -23,7 +23,7 @@ export const projects: Project[] = [
     tags: ["AI", "Vision API", "Next.js", "hotdog", "not hotdog"],
     link: "/hotdog",
     external: true,
-    image: "/projects/hotdogornot/Not-hotdog.webp",
+    image: "/projects/hotdogornot/Not-hotdog.png",
     cta: "Try it out",
   },
 

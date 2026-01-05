@@ -266,12 +266,12 @@ export default function StackedProjects() {
                         </div>
 
                         {/* Image - 👈 ADJUST HERE: h-[360px] (was h-[280px]) */}
-                        <div className="relative h-[360px] overflow-hidden rounded-2xl bg-white/[0.03]">
+                        <div className="relative aspect-[16/9] overflow-hidden rounded-2xl bg-white/[0.03]">
                           {p.image && (
                             <img
                               src={p.image}
                               alt={p.title}
-                              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                              className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
                             />
                           )}
                           <div className="absolute inset-0 bg-gradient-to-t from-[#171d27]/30 to-transparent" />
