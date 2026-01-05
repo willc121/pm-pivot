@@ -7,6 +7,29 @@ import ScrambleLink from "../../components/ScrambleLink";
 export const metadata: Metadata = {
   title: "Will Chung | Pilot to Product",
   description: "Former Army Blackhawk pilot pivoting into product management. Building things. Breaking things.",
+  openGraph: {
+    title: "Will Chung | Pilot to Product",
+    description: "Former Army Blackhawk pilot pivoting into product management. Building things. Breaking things.",
+    url: "https://www.willchung.io",
+    siteName: "Will Chung Portfolio",
+    images: [
+      {
+        url: "https://www.willchung.io/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Will Chung - Pilot to Product",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Will Chung | Pilot to Product",
+    description: "Former Army Blackhawk pilot pivoting into product management. Building things. Breaking things.",
+    images: ["https://www.willchung.io/og-image.png"],
+  },
+  metadataBase: new URL("https://www.willchung.io"),
 };
 
 
