@@ -229,7 +229,7 @@ export default function StackedProjects() {
                                 isActive ? "text-white" : "text-white/90"
                               }`}
                             >
-                              {p.title}
+                             
                             </h3>
                             <p
                               className={`mt-3 text-sm leading-relaxed transition-colors duration-300 ${
