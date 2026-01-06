@@ -75,6 +75,6 @@ export const projects: Project[] = [
     description:
       "Currently working on this and will share more details soon.",
     tags: ["AI", "Evaluation", "Systems"],
-    // image: "/projects/ai-evals.png",
+    image: "/projects//ai-eval/holding-pic.png",
   },
 ]
