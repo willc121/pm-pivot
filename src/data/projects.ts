@@ -19,7 +19,7 @@ export const projects: Project[] = [
     year: "2025",
     outcome: "Live MVP",
     description:
-      "Built the iconic HBO's Silicon Valley app using GPT-Ro-mini vision API, with rate limiting, CAPTCHA protection, and cost controls.",
+      "Built the iconic HBO's Silicon Valley app using GPT-4o-mini vision API, with rate limiting, CAPTCHA protection, and cost controls.",
     tags: ["AI", "Vision API", "Next.js", "hotdog", "not hotdog"],
     link: "/hotdog",
     external: true,
