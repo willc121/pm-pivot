@@ -538,7 +538,7 @@ export default function GarminPage() {
 
         // Fetch sleep stats from summary table
         const { data: sleepSummary } = await supabase
-          .from('sleep_summary')
+          .from('sleep_summary_view')
           .select('*')
           .single();
 
