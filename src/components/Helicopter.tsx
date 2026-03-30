@@ -112,8 +112,8 @@ export default function Helicopter() {
 
           {/* Red cross (MEDEVAC) — centered below windows */}
           <g filter="url(#glow)" opacity="0.7">
-            <rect x="105" y="77" width="12" height="3" rx="0.5" fill="rgba(248,56,56,0.6)" />
-            <rect x="109.5" y="72.5" width="3" height="12" rx="0.5" fill="rgba(248,56,56,0.6)" />
+            <rect x="105" y="80" width="12" height="3" rx="0.5" fill="rgba(248,56,56,0.6)" />
+            <rect x="109.5" y="75.5" width="3" height="12" rx="0.5" fill="rgba(248,56,56,0.6)" />
           </g>
 
           {/* Tail boom */}
