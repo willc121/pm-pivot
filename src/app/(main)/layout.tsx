@@ -112,7 +112,7 @@ export default function RootLayout({
               <div className="flex flex-col gap-2 py-5 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-white/30 md:flex-row md:items-center md:justify-between">
                 <p>© {new Date().getFullYear()} Will Chung</p>
                 <p className="text-white/25">
-                  37.7749° N <span className="text-signal/50">/</span> 122.4194° W
+                  Pilot <span className="text-signal/50">&rarr;</span> Product
                 </p>
               </div>
             </div>

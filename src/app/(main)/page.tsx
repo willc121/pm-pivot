@@ -35,7 +35,7 @@ export default function Home() {
                 <span className="status-dot" />
                 <span className="hud-label">Pilot &rarr; Product</span>
                 <span className="h-px w-8 bg-white/15" />
-                <span className="hud-label text-white/30">Field Notes &mdash; SF</span>
+                <span className="hud-label text-white/30">Builder at heart</span>
               </div>
 
               {/* Headline */}
@@ -53,14 +53,14 @@ export default function Home() {
               {/* Live terminal status line */}
               <div className="animate-fade-in-up delay-300 mt-5 flex items-center gap-2 font-mono text-sm">
                 <span className="text-signal">&gt;</span>
-                <span className="text-white/45">currently</span>
+                <span className="text-white/45">I build</span>
                 <ScrambleText
                   className="font-medium text-signal/90"
                   phrases={[
-                    "building MCP servers",
-                    "training vision classifiers",
-                    "wiring data pipelines",
-                    "shipping software",
+                    "MCP servers",
+                    "vision classifiers",
+                    "data pipelines",
+                    "weekend prototypes",
                   ]}
                 />
                 <span className="inline-block h-4 w-[7px] bg-signal/70 animate-blink" />

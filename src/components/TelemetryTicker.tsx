@@ -1,15 +1,14 @@
 "use client";
 
 const items = [
-  "System nominal",
   "Pilot \u2192 Product",
-  "Shipping software",
-  "SF Bay \u00b7 37.77\u00b0N 122.41\u00b0W",
-  "MCP // Vision // Data pipelines",
-  "MEDEVAC alumni",
+  "MEDEVAC Blackhawk pilot",
+  "Product Manager @ Microsoft",
   "MIT Sloan MBA",
+  "MCP // Vision // Data pipelines",
+  "Building things to prove ideas",
+  "Shipping software",
   "Open to connect",
-  "Built under pressure",
 ];
 
 export default function TelemetryTicker() {
