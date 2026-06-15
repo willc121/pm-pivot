@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { projects, type Project } from "@/data/projects";
 import ScrambleLink from "./ScrambleLink";
@@ -242,7 +243,13 @@ export default function StackedProjects() {
                         </div>
 
                         {/* Image viewport */}
-                        <div className="relative aspect-[16/9] overflow-hidden rounded-xl bg-white/[0.02] ring-1 ring-white/[0.06]">
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.96 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, amount: 0.3 }}
+                          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                          className="relative aspect-[16/9] overflow-hidden rounded-xl bg-white/[0.02] ring-1 ring-white/[0.06]"
+                        >
                           {p.image && (
                             // eslint-disable-next-line @next/next/no-img-element
                             <img
@@ -257,7 +264,7 @@ export default function StackedProjects() {
                           <span className="pointer-events-none absolute right-2 top-2 h-3.5 w-3.5 border-r border-t border-white/20" />
                           <span className="pointer-events-none absolute bottom-2 left-2 h-3.5 w-3.5 border-b border-l border-white/20" />
                           <span className="pointer-events-none absolute bottom-2 right-2 h-3.5 w-3.5 border-b border-r border-white/20" />
-                        </div>
+                        </motion.div>
                       </div>
                     </div>
                   </div>

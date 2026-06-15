@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 const projects = [
   {
     title: "Sample project title",
@@ -34,8 +38,12 @@ export default function ProjectsPage() {
 
       <div className="mt-12 grid gap-5 md:grid-cols-2">
         {projects.map((p, i) => (
-          <article
+          <motion.article
             key={p.title}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
             className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 transition-all duration-300 hover:border-signal/30 hover:bg-white/[0.03]"
           >
             <span className="pointer-events-none absolute left-3 top-3 h-3.5 w-3.5 border-l border-t border-white/15" />
@@ -62,7 +70,7 @@ export default function ProjectsPage() {
                 {p.impact}
               </p>
             </div>
-          </article>
+          </motion.article>
         ))}
       </div>
     </section>

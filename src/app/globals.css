@@ -175,6 +175,18 @@ button:focus-visible {
   100% { transform: translateX(100%); }
 }
 
+@keyframes radar {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+.animate-radar { animation: radar 7s linear infinite; }
+.animate-marquee { animation: marquee 34s linear infinite; }
+
 .animate-float { animation: float 5s ease-in-out infinite; }
 .animate-spin-rotor { animation: spin-rotor 0.4s linear infinite; }
 .animate-spin-rotor-fast { animation: spin-rotor 0.25s linear infinite; }
