@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import "../globals.css";
+import { fontVariables } from "@/lib/fonts";
 import ScrambleLink from "../../components/ScrambleLink";
 
 export const metadata: Metadata = {
@@ -44,43 +45,53 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className="antialiased bg-[#0a0e17] text-slate-100">
+    <html lang="en" className={`dark ${fontVariables}`}>
+      <body className="font-sans antialiased bg-background text-foreground">
         <div className="min-h-screen flex flex-col">
-          {/* Header */}
-          <header className="border-b border-white/[0.06] bg-[#0a0e17]/80 backdrop-blur-xl sticky top-0 z-[300]">
+          {/* ─── Header ─── */}
+          <header className="sticky top-0 z-[300] border-b border-white/[0.07] bg-background/70 backdrop-blur-xl">
             <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div className="flex items-center justify-between py-4">
-                <Link
-                  href="/"
-                  className="group flex items-center"
-                  aria-label="Home"
-                >
-                  <span className="relative h-10 w-10 overflow-hidden rounded-lg
-                    bg-white/8
-                    ring-1 ring-white/15
-                    shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_8px_24px_rgba(0,0,0,0.4)]
-                    transition-all duration-300
-                    group-hover:bg-white/12
-                    group-hover:ring-white/25
-                    group-hover:shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_8px_24px_rgba(0,0,0,0.3)]"
+              <div className="flex items-center justify-between py-3.5">
+                {/* Brand / callsign */}
+                <Link href="/" className="group flex items-center gap-3" aria-label="Home">
+                  <span
+                    className="relative grid h-9 w-9 place-items-center overflow-hidden rounded-md
+                      border border-white/15 bg-white/[0.04]
+                      transition-all duration-300
+                      group-hover:border-signal/50 group-hover:bg-white/[0.07]"
                   >
                     <Image
                       src="/icon.png"
                       alt="WC"
                       fill
-                      className="object-contain brightness-150 contrast-125 saturate-110"
+                      className="object-contain p-1 brightness-150 contrast-125"
                       priority
                     />
                   </span>
+                  <span className="flex flex-col leading-none">
+                    <span className="text-[0.95rem] font-semibold tracking-tight text-white">
+                      Will Chung
+                    </span>
+                    <span className="mt-1 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-white/40">
+                      PM <span className="text-signal/70">//</span> Builder
+                    </span>
+                  </span>
                 </Link>
 
-                <nav className="flex flex-wrap items-center gap-6 text-sm text-white/50">
+                {/* Nav */}
+                <nav className="flex flex-wrap items-center gap-5 sm:gap-7">
+                  <span className="hidden items-center gap-2 sm:flex">
+                    <span className="status-dot" />
+                    <span className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-white/45">
+                      Open to connect
+                    </span>
+                  </span>
+                  <span className="hidden h-3 w-px bg-white/10 sm:block" />
                   {navLinks.map((link) => (
                     <ScrambleLink
                       key={link.href}
                       href={link.href}
-                      className="inline-block transition-colors duration-300 hover:text-white"
+                      className="link-underline font-mono text-[0.7rem] uppercase tracking-[0.18em] text-white/55 transition-colors duration-300 hover:text-white"
                       target={link.external ? "_blank" : undefined}
                       rel={link.external ? "noreferrer" : undefined}
                     >
@@ -95,11 +106,14 @@ export default function RootLayout({
           {/* Page content */}
           <main className="flex-1">{children}</main>
 
-          {/* Footer */}
-          <footer className="border-t border-white/[0.06] bg-[#0a0e17]/80">
+          {/* ─── Footer ─── */}
+          <footer className="border-t border-white/[0.07] bg-background">
             <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div className="flex flex-col gap-2 py-4 text-xs text-white/30 md:flex-row md:items-center md:justify-between">
+              <div className="flex flex-col gap-2 py-5 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-white/30 md:flex-row md:items-center md:justify-between">
                 <p>© {new Date().getFullYear()} Will Chung</p>
+                <p className="text-white/25">
+                  37.7749° N <span className="text-signal/50">/</span> 122.4194° W
+                </p>
               </div>
             </div>
           </footer>

@@ -1,5 +1,6 @@
 import "../globals.css";
 import Script from "next/script";
+import { fontVariables } from "@/lib/fonts";
 
 export default function StandaloneLayout({
   children,
@@ -7,11 +8,11 @@ export default function StandaloneLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`dark ${fontVariables}`}>
       <head />
-      <body>
+      <body className="font-sans">
         {children}
-        <Script 
+        <Script
           src="https://challenges.cloudflare.com/turnstile/v0/api.js"
           strategy="beforeInteractive"
         />

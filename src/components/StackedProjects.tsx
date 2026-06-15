@@ -14,9 +14,6 @@ export default function StackedProjects() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [mousePos, setMousePos] = useState<{ x: number; y: number } | null>(null);
 
-  const [copied, setCopied] = useState(false);
-  const copyTimerRef = useRef<number | null>(null);
-
   const stickyTopBase = 15;
   const headerH = 64;
 
@@ -31,13 +28,7 @@ export default function StackedProjects() {
   const totalCards = formatted.length;
   const currentYear = new Date().getFullYear();
 
-  useEffect(() => {
-    return () => {
-      if (copyTimerRef.current) window.clearTimeout(copyTimerRef.current);
-    };
-  }, []);
-
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>, index: number) => {
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     setMousePos({
       x: e.clientX - rect.left,
@@ -86,11 +77,11 @@ export default function StackedProjects() {
   };
 
   const pillClass =
-    "rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5 text-sm text-white/70 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/[0.06] hover:text-white hover:shadow-[0_0_20px_rgba(56,189,248,0.08)]";
+    "rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5 font-mono text-xs uppercase tracking-[0.16em] text-white/65 transition-all duration-300 hover:border-signal/40 hover:bg-signal/[0.06] hover:text-white";
 
   const getCardWrapperClass = (isActive: boolean) =>
     [
-      "group relative isolate rounded-3xl overflow-hidden",
+      "group relative isolate rounded-2xl overflow-hidden",
       "transition-all duration-500 ease-out",
       isActive ? "hover:-translate-y-1" : "",
     ].join(" ");
@@ -99,7 +90,7 @@ export default function StackedProjects() {
     <>
       <section className="pt-6">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="relative mt-10">
+          <div className="relative mt-6">
             {formatted.map((p, i) => {
               const isActive = i === activeIndex;
               const z = 100 + i;
@@ -117,41 +108,41 @@ export default function StackedProjects() {
                 >
                   <div
                     className={getCardWrapperClass(isActive)}
-                    onMouseMove={(e) => isActive && handleMouseMove(e, i)}
+                    onMouseMove={(e) => isActive && handleMouseMove(e)}
                     onMouseLeave={handleMouseLeave}
                   >
                     {/* Mouse-tracking spotlight */}
                     {isActive && mousePos && (
                       <div
-                        className="pointer-events-none absolute -inset-px rounded-3xl opacity-100 transition-opacity duration-500 z-[1]"
+                        className="pointer-events-none absolute -inset-px rounded-2xl opacity-100 transition-opacity duration-500 z-[1]"
                         style={{
-                          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(56,189,248,0.06), transparent 40%)`,
+                          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(242,180,65,0.06), transparent 40%)`,
                         }}
                       />
                     )}
 
                     {/* Card surface */}
                     <div
-                      className="absolute inset-0 rounded-3xl transition-all duration-500"
+                      className="absolute inset-0 rounded-2xl transition-all duration-500"
                       style={{
                         background: isActive
-                          ? "linear-gradient(180deg, rgba(20,28,40,0.98) 0%, rgba(15,21,32,0.98) 100%)"
-                          : "linear-gradient(180deg, rgba(18,24,35,0.98) 0%, rgba(13,18,28,0.98) 100%)",
+                          ? "linear-gradient(180deg, rgba(18,22,28,0.98) 0%, rgba(11,14,19,0.98) 100%)"
+                          : "linear-gradient(180deg, rgba(14,17,22,0.98) 0%, rgba(10,12,16,0.98) 100%)",
                         border: isActive
                           ? "1px solid rgba(255,255,255,0.12)"
                           : "1px solid rgba(255,255,255,0.06)",
                         boxShadow: isActive
-                          ? "0 0 0 1px rgba(255,255,255,0.04), 0 25px 80px -20px rgba(0,0,0,0.7), 0 0 40px rgba(56,189,248,0.04)"
+                          ? "0 0 0 1px rgba(255,255,255,0.04), 0 25px 80px -20px rgba(0,0,0,0.7), 0 0 50px rgba(242,180,65,0.04)"
                           : "0 0 0 1px rgba(255,255,255,0.02), 0 15px 40px -15px rgba(0,0,0,0.4)",
                       }}
                     />
 
                     {/* Top edge highlight */}
                     <div
-                      className="pointer-events-none absolute inset-x-0 top-0 h-px rounded-t-3xl"
+                      className="pointer-events-none absolute inset-x-0 top-0 h-px rounded-t-2xl"
                       style={{
                         background: isActive
-                          ? "linear-gradient(90deg, transparent, rgba(255,255,255,0.1) 30%, rgba(56,189,248,0.15) 50%, rgba(255,255,255,0.1) 70%, transparent)"
+                          ? "linear-gradient(90deg, transparent, rgba(255,255,255,0.08) 30%, rgba(242,180,65,0.5) 50%, rgba(255,255,255,0.08) 70%, transparent)"
                           : "linear-gradient(90deg, transparent, rgba(255,255,255,0.04) 50%, transparent)",
                       }}
                     />
@@ -160,7 +151,7 @@ export default function StackedProjects() {
                     <div className="relative z-10">
                       {/* Header lip */}
                       <div
-                        className="flex items-center justify-between px-6"
+                        className="flex items-center justify-between gap-4 px-5 sm:px-6"
                         style={{
                           height: headerH,
                           borderBottom: isActive
@@ -168,28 +159,27 @@ export default function StackedProjects() {
                             : "1px solid rgba(255,255,255,0.03)",
                         }}
                       >
-                        <div className="flex items-center gap-3 text-xs">
+                        <div className="flex min-w-0 items-center gap-3">
                           <span
-                            className={`font-mono font-medium transition-colors duration-500 ${
-                              isActive ? "text-sky-400" : "text-sky-400/40"
+                            className={`font-mono text-xs font-medium tabular-nums transition-colors duration-500 ${
+                              isActive ? "text-signal" : "text-signal/35"
                             }`}
                           >
                             {p.n}
                           </span>
-                          <span className="text-white/15">·</span>
+                          <span className="h-3 w-px bg-white/10" />
                           <span
-                            className={`font-semibold text-sm sm:text-xl md:text-2xl transition-colors duration-500 ${
-                              isActive ? "text-white/90" : "text-white/50"
+                            className={`truncate text-sm font-semibold tracking-tight transition-colors duration-500 sm:text-lg ${
+                              isActive ? "text-white" : "text-white/50"
                             }`}
                           >
                             {p.title}
                           </span>
-                          <span className="text-white/15">·</span>
                           <span
-                            className={`rounded-full border px-3 py-1 text-xs transition-all duration-500 ${
+                            className={`hidden shrink-0 rounded-full border px-2.5 py-0.5 font-mono text-[0.6rem] uppercase tracking-[0.16em] transition-all duration-500 sm:inline-block ${
                               isActive
-                                ? "border-sky-400/20 bg-sky-400/[0.06] text-sky-300"
-                                : "border-white/6 bg-white/[0.02] text-sky-300/40"
+                                ? "border-signal/25 bg-signal/[0.08] text-signal"
+                                : "border-white/6 bg-white/[0.02] text-white/35"
                             }`}
                           >
                             {p.outcome}
@@ -200,26 +190,31 @@ export default function StackedProjects() {
                           href={p.link || `/projects/${p.slug}`}
                           target={p.external ? "_blank" : undefined}
                           rel={p.external ? "noopener noreferrer" : undefined}
-                          className={`flex items-center gap-2 text-sm transition-all duration-300 group/link ${
-                            isActive ? "text-white/80 hover:text-white" : "text-white/40"
+                          className={`group/link flex shrink-0 items-center gap-2 font-mono text-[0.7rem] uppercase tracking-[0.16em] transition-all duration-300 ${
+                            isActive ? "text-white/75 hover:text-signal" : "text-white/35"
                           }`}
                         >
-                          <span>{p.cta || "Check it out"}</span>
+                          <span className="hidden sm:inline">{p.cta || "Open"}</span>
                           <span
                             aria-hidden
                             className="transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
                           >
-                            ↗
+                            &#8599;
                           </span>
                         </Link>
                       </div>
 
                       {/* Body */}
-                      <div className="grid grid-cols-1 gap-8 p-8 lg:grid-cols-2">
+                      <div className="grid grid-cols-1 gap-8 p-6 sm:p-8 lg:grid-cols-2">
                         <div className="flex flex-col justify-between">
                           <div>
+                            <div className="flex items-center gap-3 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-white/35">
+                              <span>{p.year}</span>
+                              <span className="h-px w-6 bg-white/15" />
+                              <span>{p.tags.length} systems</span>
+                            </div>
                             <p
-                              className={`mt-1 text-[15px] leading-relaxed transition-colors duration-500 ${
+                              className={`mt-4 text-[15px] leading-relaxed transition-colors duration-500 ${
                                 isActive ? "text-white/70" : "text-white/45"
                               }`}
                             >
@@ -227,15 +222,16 @@ export default function StackedProjects() {
                             </p>
                           </div>
 
-                          <div className="mt-5 space-y-4">
+                          <div className="mt-6 space-y-3">
+                            <span className="hud-label text-white/35">Stack</span>
                             <div className="flex flex-wrap gap-2">
                               {p.tags.map((t) => (
                                 <span
                                   key={t}
-                                  className={`rounded-full px-3 py-1 text-xs ring-1 ring-inset transition-all duration-500 ${
+                                  className={`rounded-md px-2.5 py-1 font-mono text-[0.65rem] uppercase tracking-[0.08em] ring-1 ring-inset transition-all duration-500 ${
                                     isActive
                                       ? "bg-white/[0.04] text-white/75 ring-white/10"
-                                      : "bg-white/[0.02] text-white/50 ring-white/5"
+                                      : "bg-white/[0.02] text-white/45 ring-white/5"
                                   }`}
                                 >
                                   {t}
@@ -245,16 +241,22 @@ export default function StackedProjects() {
                           </div>
                         </div>
 
-                        {/* Image */}
-                        <div className="relative aspect-[16/9] overflow-hidden rounded-2xl bg-white/[0.02] ring-1 ring-white/[0.06]">
+                        {/* Image viewport */}
+                        <div className="relative aspect-[16/9] overflow-hidden rounded-xl bg-white/[0.02] ring-1 ring-white/[0.06]">
                           {p.image && (
+                            // eslint-disable-next-line @next/next/no-img-element
                             <img
                               src={p.image}
                               alt={p.title}
                               className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
                             />
                           )}
-                          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17]/20 to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-background/30 to-transparent" />
+                          {/* Corner brackets */}
+                          <span className="pointer-events-none absolute left-2 top-2 h-3.5 w-3.5 border-l border-t border-white/20" />
+                          <span className="pointer-events-none absolute right-2 top-2 h-3.5 w-3.5 border-r border-t border-white/20" />
+                          <span className="pointer-events-none absolute bottom-2 left-2 h-3.5 w-3.5 border-b border-l border-white/20" />
+                          <span className="pointer-events-none absolute bottom-2 right-2 h-3.5 w-3.5 border-b border-r border-white/20" />
                         </div>
                       </div>
                     </div>
@@ -281,12 +283,12 @@ export default function StackedProjects() {
               >
                 {/* Card surface */}
                 <div
-                  className="absolute inset-0 rounded-3xl transition-all duration-500"
+                  className="absolute inset-0 rounded-2xl transition-all duration-500"
                   style={{
                     background:
                       activeIndex === totalCards
-                        ? "linear-gradient(180deg, rgba(20,28,40,0.98) 0%, rgba(15,21,32,0.98) 100%)"
-                        : "linear-gradient(180deg, rgba(18,24,35,0.98) 0%, rgba(13,18,28,0.98) 100%)",
+                        ? "linear-gradient(180deg, rgba(18,22,28,0.98) 0%, rgba(11,14,19,0.98) 100%)"
+                        : "linear-gradient(180deg, rgba(14,17,22,0.98) 0%, rgba(10,12,16,0.98) 100%)",
                     border:
                       activeIndex === totalCards
                         ? "1px solid rgba(255,255,255,0.12)"
@@ -300,11 +302,11 @@ export default function StackedProjects() {
 
                 {/* Top edge highlight */}
                 <div
-                  className="pointer-events-none absolute inset-x-0 top-0 h-px rounded-t-3xl"
+                  className="pointer-events-none absolute inset-x-0 top-0 h-px rounded-t-2xl"
                   style={{
                     background:
                       activeIndex === totalCards
-                        ? "linear-gradient(90deg, transparent, rgba(255,255,255,0.1) 30%, rgba(56,189,248,0.15) 50%, rgba(255,255,255,0.1) 70%, transparent)"
+                        ? "linear-gradient(90deg, transparent, rgba(255,255,255,0.08) 30%, rgba(242,180,65,0.5) 50%, rgba(255,255,255,0.08) 70%, transparent)"
                         : "linear-gradient(90deg, transparent, rgba(255,255,255,0.04) 50%, transparent)",
                   }}
                 />
@@ -313,7 +315,7 @@ export default function StackedProjects() {
                 <div className="relative z-10 h-full">
                   {/* Header lip */}
                   <div
-                    className="flex items-center justify-between px-6"
+                    className="flex items-center justify-between px-5 sm:px-6"
                     style={{
                       height: headerH,
                       borderBottom:
@@ -322,17 +324,17 @@ export default function StackedProjects() {
                           : "1px solid rgba(255,255,255,0.03)",
                     }}
                   >
-                    <div className="flex items-center gap-3 text-xs">
+                    <div className="flex items-center gap-3">
                       <span
-                        className={`font-mono font-medium transition-colors duration-500 ${
-                          activeIndex === totalCards ? "text-sky-400" : "text-sky-400/40"
+                        className={`font-mono text-xs font-medium transition-colors duration-500 ${
+                          activeIndex === totalCards ? "text-signal" : "text-signal/35"
                         }`}
                       >
-                        ∞
+                        &#8734;
                       </span>
-                      <span className="text-white/15">·</span>
+                      <span className="h-3 w-px bg-white/10" />
                       <span
-                        className={`transition-colors duration-500 ${
+                        className={`font-mono text-[0.7rem] uppercase tracking-[0.18em] transition-colors duration-500 ${
                           activeIndex === totalCards ? "text-white/60" : "text-white/35"
                         }`}
                       >
@@ -342,29 +344,28 @@ export default function StackedProjects() {
 
                     <button
                       onClick={scrollToTop}
-                      className={`flex cursor-pointer items-center gap-2 text-sm transition-all duration-300 hover:text-white ${
-                        activeIndex === totalCards ? "text-white/80" : "text-white/40"
+                      className={`flex cursor-pointer items-center gap-2 font-mono text-[0.7rem] uppercase tracking-[0.16em] transition-all duration-300 hover:text-signal ${
+                        activeIndex === totalCards ? "text-white/75" : "text-white/35"
                       }`}
                     >
                       <span>Back to top</span>
-                      <span aria-hidden>↑</span>
+                      <span aria-hidden>&#8593;</span>
                     </button>
                   </div>
 
                   {/* Body */}
                   <div
-                    className="flex flex-col items-center justify-start pt-24 px-6 text-center"
+                    className="flex flex-col items-center justify-start px-6 pt-24 text-center"
                     style={{ height: `calc(100% - ${headerH}px)` }}
                   >
+                    <span className="hud-label mb-6 text-white/40">Let&apos;s connect</span>
                     <h3
-                      className={`text-3xl font-bold tracking-tight transition-colors duration-500 sm:text-4xl lg:text-5xl ${
+                      className={`text-3xl font-semibold tracking-tight transition-colors duration-500 sm:text-4xl lg:text-5xl ${
                         activeIndex === totalCards ? "text-white" : "text-white/80"
                       }`}
                     >
                       Still here?{" "}
-                      <span className="bg-gradient-to-r from-sky-400 to-violet-400 bg-clip-text text-transparent">
-                        Let&apos;s talk.
-                      </span>
+                      <span className="text-signal">Let&apos;s talk.</span>
                     </h3>
 
                     <p
@@ -372,7 +373,8 @@ export default function StackedProjects() {
                         activeIndex === totalCards ? "text-white/50" : "text-white/35"
                       }`}
                     >
-                      Always down to chat about product, building things, or the occasional helicopter story.
+                      Always down to chat about product, building things, or the occasional
+                      helicopter story.
                     </p>
 
                     {/* Links */}
@@ -402,8 +404,8 @@ export default function StackedProjects() {
                     <div className="mx-auto mt-12 h-px w-full max-w-xs bg-gradient-to-r from-transparent via-white/8 to-transparent" />
 
                     {/* Copyright */}
-                    <p className="mt-6 font-mono text-xs text-white/20">
-                      © {currentYear} Will Chung
+                    <p className="mt-6 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-white/20">
+                      &copy; {currentYear} Will Chung &middot; Pilot &rarr; Product
                     </p>
                   </div>
                 </div>
@@ -417,10 +419,9 @@ export default function StackedProjects() {
       <button
         onClick={scrollToTop}
         className={`fixed bottom-6 right-6 z-[200] flex h-11 w-11 items-center justify-center rounded-full
-          border border-white/8 bg-[#0f1520]/90 text-white/60 backdrop-blur-md
+          border border-white/8 bg-surface/90 text-white/60 backdrop-blur-md
           transition-all duration-300
-          hover:border-white/15 hover:bg-[#141c2b] hover:text-white
-          hover:shadow-[0_0_20px_rgba(56,189,248,0.08)]
+          hover:border-signal/30 hover:bg-surface-2 hover:text-signal
           ${showScrollTop ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"}`}
         aria-label="Scroll to top"
       >

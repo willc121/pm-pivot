@@ -17,34 +17,51 @@ const projects = [
 
 export default function ProjectsPage() {
   return (
-    <section className="mx-auto max-w-5xl px-4 py-12 space-y-6">
-      <div className="space-y-2">
-        <h1 className="text-3xl font-semibold">Projects</h1>
-        <p className="text-slate-300">
-          Selected projects that show how I approach product problems,
-          make tradeoffs, and drive measurable outcomes.
-        </p>
+    <section className="mx-auto max-w-5xl px-6 py-16">
+      {/* HUD eyebrow */}
+      <div className="flex items-center gap-3">
+        <span className="status-dot" />
+        <span className="hud-label">Index &mdash; Selected Work</span>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
-        {projects.map((p) => (
+      <h1 className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">
+        Projects
+      </h1>
+      <p className="mt-4 max-w-2xl text-[1.05rem] leading-relaxed text-white/60">
+        Selected projects that show how I approach product problems, make tradeoffs,
+        and drive measurable outcomes.
+      </p>
+
+      <div className="mt-12 grid gap-5 md:grid-cols-2">
+        {projects.map((p, i) => (
           <article
             key={p.title}
-            className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 shadow-sm"
+            className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 transition-all duration-300 hover:border-signal/30 hover:bg-white/[0.03]"
           >
-            <p className="text-xs uppercase tracking-[0.22em] text-sky-400 mb-2">
-              {p.role} • {p.timeframe}
-            </p>
-            <h2 className="text-lg font-semibold mb-2">
+            <span className="pointer-events-none absolute left-3 top-3 h-3.5 w-3.5 border-l border-t border-white/15" />
+            <span className="pointer-events-none absolute right-3 top-3 h-3.5 w-3.5 border-r border-t border-white/15" />
+
+            <div className="flex items-center gap-3 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-white/40">
+              <span className="text-signal">{String(i + 1).padStart(2, "0")}</span>
+              <span className="h-px w-5 bg-white/15" />
+              <span>{p.role}</span>
+              <span className="text-white/20">/</span>
+              <span>{p.timeframe}</span>
+            </div>
+
+            <h2 className="mt-4 text-lg font-semibold tracking-tight text-white/90">
               {p.title}
             </h2>
-            <p className="text-sm text-slate-300 mb-3">
-              {p.summary}
-            </p>
-            <p className="text-xs text-slate-400">
-              <span className="font-semibold text-slate-200">Impact: </span>
-              {p.impact}
-            </p>
+            <p className="mt-2 text-sm leading-relaxed text-white/55">{p.summary}</p>
+
+            <div className="mt-5 border-t border-white/[0.06] pt-4">
+              <p className="text-xs leading-relaxed text-white/45">
+                <span className="font-mono uppercase tracking-[0.16em] text-signal/80">
+                  Impact &mdash;{" "}
+                </span>
+                {p.impact}
+              </p>
+            </div>
           </article>
         ))}
       </div>
